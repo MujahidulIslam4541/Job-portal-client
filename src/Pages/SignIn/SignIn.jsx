@@ -1,13 +1,34 @@
 import Lottie from "lottie-react";
 import SignInLottieData from "../../assets/login.json";
+import { useContext } from "react";
+import AuthContext from "../../context/AuthContext";
+import Swal from "sweetalert2";
 
 const SignIn = () => {
+  const { SignInUser } = useContext(AuthContext);
   const handleSignIn = (e) => {
     e.preventDefault();
     const from = e.target;
     const email = from.email.value;
     const password = from.password.value;
     console.log({ email, password });
+
+    SignInUser(email, password)
+      .then((result) => {
+        console.log(result.user);
+        Swal.fire({
+          title: "Good job!",
+          text: ("User Sign In Successful"),
+          icon: "success",
+        });
+      })
+      .catch((error) => {
+         Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: ("Please solved the Error ", error.message),
+        });
+      });
   };
 
   return (

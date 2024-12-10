@@ -33,7 +33,7 @@ const Register = () => {
         });
       })
       .catch((error) => {
-        return Swal.fire({
+         Swal.fire({
           icon: "error",
           title: "Oops...",
           text: ("Please solved the Error ", error.message),
