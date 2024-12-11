@@ -1,20 +1,48 @@
-import { motion } from "motion/react"
+import { motion, easeInOut } from "motion/react";
+import team1 from "../../assets/team/team1.jpg";
+import team2 from "../../assets/team/team2.jpg";
 const Banner = () => {
   return (
-    <div className="hero bg-base-200 min-h-screen">
+    <div className="hero bg-base-200 h-96">
       <div className="hero-content flex-col lg:flex-row-reverse">
         <div className="flex-1">
-          <img
-            src="https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.webp"
-            className="max-w-sm rounded-lg shadow-2xl"
+          <motion.img
+            animate={{ y: [40, 100, 40] }}
+            transition={{ duration: 10, repeat: Infinity }}
+            src={team1}
+            className="max-w-sm w-64  rounded-t-3xl rounded-br-3xl border-l-4 border-b-4 border-blue-500 shadow-2xl"
+          />
+          <motion.img
+            animate={{ x: [100, 150, 100] }}
+            transition={{ duration: 10,delay:5, repeat: Infinity }}
+            src={team2}
+            className="max-w-sm w-64  rounded-t-3xl rounded-br-3xl border-l-4 border-b-4 border-blue-500 shadow-2xl"
           />
         </div>
         <motion.div
           animate={{ x: 50 }}
-          transition={{ duration: 2, delay: 1, ease: "easeInOut",repeat:Infinity }}
+          transition={{
+            duration: 2,
+            delay: 1,
+            ease: easeInOut,
+            repeat: Infinity,
+          }}
           className="flex-1"
         >
-          <h1 className="text-5xl font-bold">Latest Job  for your</h1>
+          <h1 className="text-5xl font-bold">
+            Latest{" "}
+            <motion.span
+              animate={{ color: ["#ff3333", "#0687fa"] }}
+              transition={{
+                duration: 1.5,
+                ease: easeInOut,
+                repeat: Infinity,
+              }}
+            >
+              Job
+            </motion.span>{" "}
+            for your
+          </h1>
           <p className="py-6">
             Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
             excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
