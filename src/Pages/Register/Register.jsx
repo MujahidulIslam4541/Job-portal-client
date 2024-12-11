@@ -3,6 +3,7 @@ import registerLottieData from "../../assets/register.json";
 import Swal from "sweetalert2";
 import { useContext } from "react";
 import AuthContext from "../../context/AuthContext";
+import SocialLogin from "../Common/SocialLogin";
 
 const Register = () => {
   const { createUser } = useContext(AuthContext);
@@ -33,7 +34,7 @@ const Register = () => {
         });
       })
       .catch((error) => {
-         Swal.fire({
+        Swal.fire({
           icon: "error",
           title: "Oops...",
           text: ("Please solved the Error ", error.message),
@@ -82,6 +83,8 @@ const Register = () => {
               <button className="btn btn-primary">Register</button>
             </div>
           </form>
+          <div className="divider">OR</div>
+          <SocialLogin></SocialLogin>
         </div>
       </div>
     </div>

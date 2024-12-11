@@ -4,9 +4,11 @@ import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
   signInWithEmailAndPassword,
+  signInWithPopup,
   signOut,
 } from "firebase/auth";
 import auth from "../firebase/Firebase.init";
+import { GoogleAuthProvider } from "firebase/auth";
 
 // eslint-disable-next-line react/prop-types
 const AuthProvide = ({ children }) => {
@@ -23,10 +25,17 @@ const AuthProvide = ({ children }) => {
     return signInWithEmailAndPassword(auth, email, password);
   };
 
-  const signOutUser=()=>{
+  const provider = new GoogleAuthProvider();
+
+  const signInWithGoogle = () => {
     setLoading(true);
-    return signOut(auth)
-  }
+    return signInWithPopup(auth, provider);
+  };
+
+  const signOutUser = () => {
+    setLoading(true);
+    return signOut(auth);
+  };
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -44,6 +53,7 @@ const AuthProvide = ({ children }) => {
     createUser,
     SignInUser,
     signOutUser,
+    signInWithGoogle
   };
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>

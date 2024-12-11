@@ -72,11 +72,11 @@ const Navbar = () => {
       </div>
       <div className="navbar-end">
         {user && user.email ? (
-          <button onClick={handleSignOut} className="btn">Sign Out</button>
+          <button onClick={handleSignOut} className="btn text-white font-semibold bg-blue-500 hover:bg-blue-400 transition ease-in-out duration-150">Sign Out</button>
         ) : (
-          <div>
-            <Link className="btn" to="register">Register</Link>
-            <Link className="btn" to="signIn">SignIn</Link>
+          <div className="flex gap-2 items-center">
+            <Link className=" text-blue-500 underline" to="register">Register</Link>
+            <Link className="btn bg-blue-500 text-white font-semibold hover:bg-blue-400 transition ease-in-out duration-150" to="signIn">SignIn</Link>
           </div>
         )}
       </div>
