@@ -19,27 +19,32 @@ const router = createBrowserRouter([
         element: <Home></Home>,
       },
       {
-        path:'jobs/:id',
-        element:<PrivetRouter>
-          <Jobdetails></Jobdetails>,
-        </PrivetRouter>,
-        loader:({params})=>fetch(`http://localhost:5000/jobs/${params.id}`)
+        path: "jobs/:id",
+        element: (
+          <PrivetRouter>
+            <Jobdetails></Jobdetails>,
+          </PrivetRouter>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/jobs/${params.id}`),
       },
       {
-        path:'jobApply/:id',
-        element:<PrivetRouter>
-          <JobApply></JobApply>
-        </PrivetRouter>,
-        loader:({params})=>fetch(`http://localhost:5000/jobs/${params.id}`)
+        path: "jobApply/:id",
+        element: (
+          <PrivetRouter>
+            <JobApply></JobApply>
+          </PrivetRouter>
+        ),
+       
       },
       {
-        path:'register',
-        element:<Register></Register>
+        path: "register",
+        element: <Register></Register>,
       },
       {
-        path:'signIn',
-        element:<SignIn></SignIn>
-      }
+        path: "signIn",
+        element: <SignIn></SignIn>,
+      },
     ],
   },
 ]);
