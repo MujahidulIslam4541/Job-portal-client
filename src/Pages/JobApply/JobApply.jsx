@@ -1,8 +1,9 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import UseContext from "../../Hooks/UseContex";
 import Swal from "sweetalert2";
 
 const JobApply = () => {
+    const navigate=useNavigate()
     const {id}=useParams()
     const {user}=UseContext()
     // console.log(id,user);
@@ -41,6 +42,7 @@ const JobApply = () => {
                     icon: "success",
                   });
             }
+            navigate('/myApplications')
         })
     }
   return (
