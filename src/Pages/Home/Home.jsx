@@ -1,5 +1,6 @@
 import Banner from "./Banner";
 import BrowserByCategory from "./BrowserByCategory";
+import HotJobs from "./HotJobs";
 
 
 const Home = () => {
@@ -7,6 +8,7 @@ const Home = () => {
         <div>
             <Banner></Banner>
             <BrowserByCategory></BrowserByCategory>
+            <HotJobs></HotJobs>
         </div>
     ); 
 };

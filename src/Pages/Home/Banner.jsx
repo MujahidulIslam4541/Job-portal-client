@@ -32,9 +32,10 @@ const Banner = () => {
           >
             The Easiest Way <br />
             <motion.span
-              animate={{ color: ["", ""] }}
+              animate={{ color: ["#065bfa", "#06a5fa"] }}
               transition={{
-                duration: 1.5,
+                duration: 5,
+                delay:3,
                 ease: easeInOut,
                 repeat: Infinity,
               }}

@@ -3,6 +3,7 @@ import SignInLottieData from "../../assets/login.json";
 import { useContext } from "react";
 import AuthContext from "../../context/AuthContext";
 import Swal from "sweetalert2";
+import SocialLogin from "../Common/SocialLogin";
 
 const SignIn = () => {
   const { SignInUser } = useContext(AuthContext);
@@ -73,6 +74,7 @@ const SignIn = () => {
               <button className="btn btn-primary">Sign In</button>
             </div>
           </form>
+          <SocialLogin></SocialLogin>
         </div>
       </div>
     </div>
