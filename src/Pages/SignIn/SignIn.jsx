@@ -4,9 +4,13 @@ import { useContext } from "react";
 import AuthContext from "../../context/AuthContext";
 import Swal from "sweetalert2";
 import SocialLogin from "../Common/SocialLogin";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const SignIn = () => {
   const { SignInUser } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
+
   const handleSignIn = (e) => {
     e.preventDefault();
     const from = e.target;
@@ -19,12 +23,13 @@ const SignIn = () => {
         console.log(result.user);
         Swal.fire({
           title: "Good job!",
-          text: ("User Sign In Successful"),
+          text: "User Sign In Successful",
           icon: "success",
         });
+        navigate(location.state||'/');
       })
       .catch((error) => {
-         Swal.fire({
+        Swal.fire({
           icon: "error",
           title: "Oops...",
           text: ("Please solved the Error ", error.message),
