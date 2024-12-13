@@ -15,7 +15,7 @@ const AddJob = () => {
     newJob.salaryRange = { min, max, currency };
     // console.log(newJob)
     newJob.requirements = newJob.requirements.split("\n");
-    newJob.responsibility = newJob.responsibility.split("\n");
+    newJob.responsibilities = newJob.responsibilities.split("\n");
     console.log(newJob);
 
     fetch("http://localhost:5000/jobs", {
@@ -34,7 +34,7 @@ const AddJob = () => {
             icon: "success",
           });
         }
-        navigate("/");
+        navigate("/myPostedJobs");
       });
   };
   return (
@@ -133,7 +133,7 @@ const AddJob = () => {
             <input
               type="email"
               placeholder="hr-email "
-              name="hrEmail"
+              name="hr_email"
               defaultValue={user?.email}
               className="input input-bordered"
               required
@@ -147,7 +147,7 @@ const AddJob = () => {
             <input
               type="text"
               placeholder="hr Name "
-              name="hrName"
+              name="hr_name"
               className="input input-bordered"
               required
             />
@@ -245,7 +245,7 @@ const AddJob = () => {
             rows={5}
             id=""
             placeholder="Write Each responsibility in new line "
-            name="responsibility"
+            name="responsibilities"
             required
           ></textarea>
         </div>
