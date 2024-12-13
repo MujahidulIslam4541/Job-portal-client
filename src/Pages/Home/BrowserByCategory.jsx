@@ -14,7 +14,7 @@ const BrowserByCategory = () => {
 
       <div>
         <Marquee>
-          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4">
+          <div className="grid grid-cols-10 gap-4">
             <div className="max-w-sm mx-auto">
               <div className="card bg-base-100 shadow-lg border rounded-md p-4">
                 <div className="flex items-center space-x-4">
