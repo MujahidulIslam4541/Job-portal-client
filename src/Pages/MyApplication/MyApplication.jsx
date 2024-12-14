@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import UseContext from "../../Hooks/UseContex";
 import { MdDelete } from "react-icons/md";
 import Swal from "sweetalert2";
+import { FaClipboardCheck } from "react-icons/fa";
 
 const MyApplication = () => {
   const { user } = UseContext();
@@ -47,29 +48,45 @@ const MyApplication = () => {
   };
   return (
     <div>
-      <div className="overflow-x-auto my-10 border-2">
-        <table className="table">
-          {/* head */}
-          <thead>
+      <div className="relative bg-gradient-to-r from-teal-400 to-blue-500 p-10 rounded-lg shadow-lg overflow-hidden">
+        
+        {/* Banner Content */}
+        <div className="text-center text-white relative z-10">
+          <h1 className="text-4xl font-extrabold mb-4 flex items-center justify-center">
+            <FaClipboardCheck className="mr-2 text-5xl" />
+            My Applications
+          </h1>
+          <p className="text-lg mb-6">
+            Stay organized and track all your job applications in one place.
+            Keep tabs on your progress and next steps!
+          </p>
+          <button className="btn btn-primary w-52 mx-auto mt-4">
+            View Applications
+          </button>
+        </div>
+      </div>
+      <div className="overflow-x-auto my-10 border-2 rounded-lg shadow-lg">
+        <table className="table table-striped w-full">
+          {/* Table Header */}
+          <thead className="bg-gradient-to-r from-blue-500 to-indigo-600 text-white">
             <tr>
-              <th>Name</th>
-              <th>Job</th>
-              <th>Favorite Color</th>
-              <th>JobDelete</th>
+              <th className="p-3 text-center">Name</th>
+              <th className="p-3 text-center">Job</th>
+              <th className="p-3 text-center">Application Date</th>
+              <th className="p-3 text-center">Delete Job</th>
             </tr>
           </thead>
+
+          {/* Table Body */}
           <tbody>
-            {/* row 1 */}
+            {/* Dynamic Rows */}
             {jobs.map((job) => (
-              <tr key={job._id}>
-                <td>
+              <tr key={job._id} className="hover:bg-gray-100 transition-all">
+                <td className="p-3">
                   <div className="flex items-center gap-3">
                     <div className="avatar">
                       <div className="mask mask-squircle h-12 w-12">
-                        <img
-                          src={job.company_logo}
-                          alt="Avatar Tailwind CSS Component"
-                        />
+                        <img src={job.company_logo} alt="Company Logo" />
                       </div>
                     </div>
                     <div>
@@ -78,21 +95,22 @@ const MyApplication = () => {
                     </div>
                   </div>
                 </td>
-                <td>
+                <td className="p-3">
                   {job.company}
                   <br />
                   <span className="badge badge-ghost badge-sm">
                     {job.location}
                   </span>
                 </td>
-                <td>{job.applicationDeadline}</td>
-                <th>
-                  <button onClick={() => handleJobDelete(job._id)} className="">
-                    <span className="text-2xl text-red-500">
-                      <MdDelete />
-                    </span>
+                <td className="p-3">{job.applicationDeadline}</td>
+                <td className="p-3 text-center">
+                  <button
+                    onClick={() => handleJobDelete(job._id)}
+                    className="text-2xl text-red-500 hover:text-red-700 transition duration-300"
+                  >
+                    <MdDelete />
                   </button>
-                </th>
+                </td>
               </tr>
             ))}
           </tbody>

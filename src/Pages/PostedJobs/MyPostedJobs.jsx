@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import UseContext from "../../Hooks/UseContex";
+import { FaBriefcase } from "react-icons/fa";
 
 const MyPostedJobs = () => {
   const { user } = UseContext();
@@ -12,27 +13,42 @@ const MyPostedJobs = () => {
   }, [user.email]);
   return (
     <div>
-      <h2>My posted Jobs{postedJobs.length}</h2>
+      <div className="relative bg-gradient-to-r from-blue-300 to-indigo-500 p-10 rounded-lg shadow-xl">
+       
+        {/* Content Section */}
+        <div className="text-center text-white relative z-10">
+          <h1 className="text-4xl font-extrabold mb-4 flex items-center justify-center">
+            <FaBriefcase className="mr-2 text-5xl" />
+            Posted Jobs
+          </h1>
+          <p className="text-lg">
+            Explore the latest job opportunities and start your new career
+            journey today! Find jobs that match your skills and interests.
+          </p>
+        </div>
+      </div>
 
-      <div className="overflow-x-auto">
-        <table className="table">
-          {/* head */}
-          <thead>
+      <div className="overflow-x-auto mt-10">
+        <table className="table w-full table-zebra">
+          {/* Table Header */}
+          <thead className="bg-gradient-to-r from-blue-500 to-indigo-600 text-white">
             <tr>
-              <th></th>
-              <th>Job Title</th>
-              <th>Application Date</th>
-              <th>Favorite Color</th>
+              <th className="p-3 text-center">#</th>
+              <th className="p-3 text-center">Job Title</th>
+              <th className="p-3 text-center">Application Date</th>
+              <th className="p-3 text-center">Application Count</th>
             </tr>
           </thead>
+
+          {/* Table Body */}
           <tbody>
-            {/* row 1 */}
+            {/* Dynamic Rows */}
             {postedJobs.map((job, index) => (
-              <tr key={index}>
-                <th>{index+1}</th>
-                <td>{job.title}</td>
-                <td>{job.applicationDeadline}</td>
-                <td>Blue</td>
+              <tr key={index} className="hover:bg-gray-100 transition-all">
+                <td className="p-3 text-center">{index + 1}</td>
+                <td className="p-3 text-center">{job.title}</td>
+                <td className="p-3 text-center">{job.applicationDeadline}</td>
+                <td className="p-3 text-center">{job.applicationCount}</td>
               </tr>
             ))}
           </tbody>

@@ -38,47 +38,52 @@ const AddJob = () => {
       });
   };
   return (
-    <div>
-      <form onSubmit={handleAddJob} className="card-body">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
-          {/* JOb title */}
+    <div className="bg-gray-100 p-8 rounded-lg shadow-lg max-w-5xl mx-auto">
+      <h1 className="text-3xl font-bold text-center text-indigo-600 mb-8">
+        Add a New Job
+      </h1>
+      <form onSubmit={handleAddJob} className="space-y-6">
+        {/* Grid for Inputs */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {/* Job Title */}
           <div className="form-control">
             <label className="label">
-              <span className="label-text">Job Title</span>
+              <span className="label-text font-semibold">Job Title</span>
             </label>
             <input
               type="text"
               name="title"
               placeholder="Job Title"
-              className="input input-bordered"
+              className="input input-bordered w-full"
               required
             />
           </div>
-          {/* location */}
+
+          {/* Location */}
           <div className="form-control">
             <label className="label">
-              <span className="label-text">location</span>
+              <span className="label-text font-semibold">Location</span>
             </label>
             <input
               type="text"
               name="location"
-              placeholder="Job location"
-              className="input input-bordered"
+              placeholder="Job Location"
+              className="input input-bordered w-full"
               required
             />
           </div>
-          {/* JobType */}
+
+          {/* Job Type */}
           <div className="form-control">
             <label className="label">
-              <span className="label-text">Job Type</span>
+              <span className="label-text font-semibold">Job Type</span>
             </label>
             <select
               name="jobType"
-              id=""
-              placeholder="Pick a Job Type"
-              defaultValue={"Pick a Job Type"}
-              className="border-2 h-full w-full rounded-md"
+              defaultValue="Pick a Job Type"
+              className="select select-bordered w-full"
             >
+              <option disabled>Pick a Job Type</option>
               <option>Hybrid</option>
               <option>Remote</option>
               <option>FullTime</option>
@@ -86,84 +91,90 @@ const AddJob = () => {
               <option>PartTime</option>
             </select>
           </div>
-          {/* application date */}
+
+          {/* Application Deadline */}
           <div className="form-control">
             <label className="label">
-              <span className="label-text">Application Date</span>
+              <span className="label-text font-semibold">
+                Application Deadline
+              </span>
             </label>
             <input
               type="date"
-              placeholder="Application Date "
               name="applicationDeadline"
-              className="input input-bordered"
+              className="input input-bordered w-full"
               required
             />
           </div>
-          {/* company */}
+
+          {/* Company */}
           <div className="form-control">
             <label className="label">
-              <span className="label-text">Company</span>
+              <span className="label-text font-semibold">Company</span>
             </label>
             <input
               type="text"
-              placeholder="Company "
               name="company"
-              className="input input-bordered"
+              placeholder="Company Name"
+              className="input input-bordered w-full"
               required
             />
           </div>
-          {/* company logo */}
+
+          {/* Company Logo */}
           <div className="form-control">
             <label className="label">
-              <span className="label-text">Company Logo URL</span>
+              <span className="label-text font-semibold">Company Logo URL</span>
             </label>
             <input
               type="url"
-              placeholder="Company Logo URL"
               name="company_logo"
-              className="input input-bordered"
+              placeholder="Company Logo URL"
+              className="input input-bordered w-full"
               required
             />
           </div>
-          {/* hr-email */}
+
+          {/* HR Email */}
           <div className="form-control">
             <label className="label">
-              <span className="label-text">HR-Email</span>
+              <span className="label-text font-semibold">HR Email</span>
             </label>
             <input
               type="email"
-              placeholder="hr-email "
               name="hr_email"
+              placeholder="HR Email"
               defaultValue={user?.email}
-              className="input input-bordered"
+              className="input input-bordered w-full"
               required
             />
           </div>
-          {/* hrName */}
+
+          {/* HR Name */}
           <div className="form-control">
             <label className="label">
-              <span className="label-text">HR-Name</span>
+              <span className="label-text font-semibold">HR Name</span>
             </label>
             <input
               type="text"
-              placeholder="hr Name "
               name="hr_name"
-              className="input input-bordered"
+              placeholder="HR Name"
+              className="input input-bordered w-full"
               required
             />
           </div>
-          {/* category */}
+
+          {/* Category */}
           <div className="form-control">
             <label className="label">
-              <span className="label-text">Category</span>
+              <span className="label-text font-semibold">Category</span>
             </label>
             <select
               name="category"
-              id=""
-              defaultValue={"Pick A One Category"}
-              placeholder="Pick A One Category"
-              className="w-full h-full rounded-md border"
+              defaultValue="Pick a Category"
+              className="select select-bordered w-full"
             >
+              <option disabled>Pick a Category</option>
               <option>Engineering</option>
               <option>Marketing</option>
               <option>Teaching</option>
@@ -171,37 +182,47 @@ const AddJob = () => {
             </select>
           </div>
         </div>
-        {/* salary Range */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-2 items-end">
+
+        {/* Salary Range */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-end">
           <div className="form-control">
             <label className="label">
-              <span className="label-text">Salary Range</span>
+              <span className="label-text font-semibold">
+                Salary Range (Min)
+              </span>
             </label>
             <input
               type="number"
-              placeholder="Min "
               name="min"
-              className="input input-bordered"
+              placeholder="Min"
+              className="input input-bordered w-full"
               required
             />
           </div>
           <div className="form-control">
+            <label className="label">
+              <span className="label-text font-semibold">
+                Salary Range (Max)
+              </span>
+            </label>
             <input
               type="number"
-              placeholder="Max "
               name="max"
-              className="input input-bordered"
+              placeholder="Max"
+              className="input input-bordered w-full"
               required
             />
           </div>
           <div className="form-control">
+            <label className="label">
+              <span className="label-text font-semibold">Currency</span>
+            </label>
             <select
               name="currency"
-              id=""
-              defaultValue={"Please Select Your Currency"}
-              placeholder="Please Select Your Currency"
-              className="border-2 w-full h-12 rounded-md"
+              defaultValue="Please Select Your Currency"
+              className="select select-bordered w-full"
             >
+              <option disabled>Please Select Your Currency</option>
               <option>BDT</option>
               <option>USD</option>
               <option>INR</option>
@@ -210,47 +231,55 @@ const AddJob = () => {
           </div>
         </div>
 
-        {/* description */}
+        {/* Description */}
         <div className="form-control">
           <label className="label">
-            <span className="label-text">Description</span>
+            <span className="label-text font-semibold">Description</span>
           </label>
           <textarea
             rows={5}
-            id=""
-            placeholder="Description "
             name="description"
+            placeholder="Description"
+            className="textarea textarea-bordered w-full"
             required
           ></textarea>
         </div>
-        {/* requirements */}
+
+        {/* Requirements */}
         <div className="form-control">
           <label className="label">
-            <span className="label-text"> Job Requirements</span>
+            <span className="label-text font-semibold">Job Requirements</span>
           </label>
           <textarea
             rows={5}
-            id=""
-            placeholder="Put Each requirements in new line "
             name="requirements"
+            placeholder="Put each requirement on a new line"
+            className="textarea textarea-bordered w-full"
             required
           ></textarea>
         </div>
-        {/* responsibility */}
+
+        {/* Responsibilities */}
         <div className="form-control">
           <label className="label">
-            <span className="label-text"> Job Responsibility</span>
+            <span className="label-text font-semibold">
+              Job Responsibilities
+            </span>
           </label>
           <textarea
             rows={5}
-            id=""
-            placeholder="Write Each responsibility in new line "
             name="responsibilities"
+            placeholder="Put each responsibility on a new line"
+            className="textarea textarea-bordered w-full"
             required
           ></textarea>
         </div>
+
+        {/* Submit Button */}
         <div className="form-control mt-6">
-          <button className="btn btn-primary">Post A Job</button>
+          <button className="w-full px-6 py-3 text-lg font-semibold text-white bg-gradient-to-r from-indigo-500 to-blue-600 rounded-lg shadow-lg transition-transform duration-300 ease-in-out transform hover:scale-105 hover:shadow-2xl focus:outline-none focus:ring-4 focus:ring-blue-300">
+            Post A Job
+          </button>
         </div>
       </form>
     </div>

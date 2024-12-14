@@ -26,7 +26,9 @@ const SignIn = () => {
           text: "User Sign In Successful",
           icon: "success",
         });
+        console.log(location.state);
         navigate(location.state||'/');
+      
       })
       .catch((error) => {
         Swal.fire({
