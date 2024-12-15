@@ -3,18 +3,25 @@ import UseContext from "../../Hooks/UseContex";
 import { MdDelete } from "react-icons/md";
 import Swal from "sweetalert2";
 import { FaClipboardCheck } from "react-icons/fa";
+import axios from "axios";
 
 const MyApplication = () => {
   const { user } = UseContext();
   const [jobs, setJobs] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/job-application?email=${user.email}`)
-      .then((res) => res.json())
-      .then((data) => {
-        // console.log(data);
-        setJobs(data);
-      });
+    // fetch(`http://localhost:5000/job-application?email=${user.email}`)
+    //   .then((res) => res.json())
+    //   .then((data) => {
+    //     // console.log(data);
+    //     setJobs(data);
+    //   });
+
+    axios
+      .get(`http://localhost:5000/job-application?email=${user.email}`, {
+        withCredentials: true,
+      })
+      .then((res) => setJobs(res.data));
   }, [user.email]);
 
   //   delete job
@@ -49,7 +56,6 @@ const MyApplication = () => {
   return (
     <div>
       <div className="relative bg-gradient-to-r from-teal-400 to-blue-500 p-10 rounded-lg shadow-lg overflow-hidden">
-        
         {/* Banner Content */}
         <div className="text-center text-white relative z-10">
           <h1 className="text-4xl font-extrabold mb-4 flex items-center justify-center">
