@@ -3,25 +3,27 @@ import UseContext from "../../Hooks/UseContex";
 import { MdDelete } from "react-icons/md";
 import Swal from "sweetalert2";
 import { FaClipboardCheck } from "react-icons/fa";
+import UseAxiosSecure from "../../Hooks/UseAxiossecure";
 // import axios from "axios";
 
 const MyApplication = () => {
   const { user } = UseContext();
   const [jobs, setJobs] = useState([]);
 
-  useEffect(() => {
-    fetch(`http://localhost:5000/job-application?email=${user.email}`)
-      .then((res) => res.json())
-      .then((data) => {
-        // console.log(data);
-        setJobs(data);
-      });
+  const useAxiosSecure = UseAxiosSecure();
 
+  useEffect(() => {
     // axios
     //   .get(`http://localhost:5000/job-application?email=${user.email}`, {
     //     withCredentials: true,
     //   })
-    //   .then((res) => setJobs(res.data));
+    //   .then((res) => {
+    //     setJobs(res.data);
+    //   });
+
+    useAxiosSecure
+      .get(`/job-application?email=${user.email}`)
+      .then((res) => setJobs(res.data));
   }, [user.email]);
 
   //   delete job

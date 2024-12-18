@@ -46,7 +46,7 @@ const AuthProvide = ({ children }) => {
       if (currentUser?.email) {
         const user = currentUser.email;
         axios
-          .post("http://localhost:5000/jwtToken", user, {
+          .post("http://localhost:5000/jwt", user, {
             withCredentials: true,
           })
           .then((res) => {

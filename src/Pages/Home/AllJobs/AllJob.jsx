@@ -38,14 +38,14 @@ const AllJob = ({ job }) => {
           <p>{description}</p>
 
           <div className="grid grid-cols-3">
-            {requirements.map((requirement, index) => (
+            {requirements?.map((requirement, index) => (
               <p key={index}>{requirement}</p>
             ))}
           </div>
           <div className="card-actions ">
             <p>
-              Salary: {salaryRange.min}-{salaryRange.max}
-              {salaryRange.currency}
+              Salary: {salaryRange?.min}-{salaryRange?.max}
+              {salaryRange?.currency}
             </p>
             <Link to={`jobs/${_id}`}>
               <button className="btn hover:bg-blue-500 hover:text-white">

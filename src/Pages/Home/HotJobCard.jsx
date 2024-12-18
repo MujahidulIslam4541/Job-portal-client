@@ -15,7 +15,7 @@ const HotJobCard = ({ job }) => {
     company,
     company_logo,
   } = job;
-  // console.log(job);
+  // console.log(job.salaryRange);
   return (
     <div className="card card-compact hover:border hover:border-blue-300 hover:-inset-y-1 shadow-xl transition ease-in duration-500">
       <div className="flex items-center gap-4 mt-2">
@@ -39,14 +39,14 @@ const HotJobCard = ({ job }) => {
         <p>{description}</p>
 
         <div className="grid grid-cols-3">
-          {requirements.map((requirement,index) => (
+          {requirements?.map((requirement,index) => (
             <p key={index}>{requirement}</p>
           ))}
         </div>
         <div className="card-actions ">
           <p>
-            Salary: {salaryRange.min}-{salaryRange.max}
-            {salaryRange.currency}
+            Salary: {salaryRange?.min}-{salaryRange?.max}
+            {salaryRange?.currency}
           </p>
           <Link to={`jobs/${_id}`}>
             <button className="btn hover:bg-blue-500 hover:text-white">

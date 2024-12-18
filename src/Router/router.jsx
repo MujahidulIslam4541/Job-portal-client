@@ -10,8 +10,9 @@ import JobApply from "../Pages/JobApply/JobApply";
 import MyApplication from "../Pages/MyApplication/MyApplication";
 import AddJob from "../Pages/addJob/AddJob";
 import MyPostedJobs from "../Pages/PostedJobs/MyPostedJobs";
-import AllJobs from "../Pages/Home/AllJobs/Alljobs";
+// import AllJobs from "../Pages/Home/AllJobs/Alljobs";
 import ViewApplications from "../Pages/ViewApplications/ViewApplications";
+import AllJobs from "../Pages/Home/AllJobs/AllJobs";
 
 const router = createBrowserRouter([
   {
