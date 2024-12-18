@@ -9,6 +9,7 @@ import {
 } from "firebase/auth";
 import auth from "../firebase/Firebase.init";
 import { GoogleAuthProvider } from "firebase/auth";
+import axios from "axios";
 
 // eslint-disable-next-line react/prop-types
 const AuthProvide = ({ children }) => {
@@ -40,7 +41,26 @@ const AuthProvide = ({ children }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
-      setLoading(false);
+      console.log("state captured", currentUser);
+
+      if (currentUser?.email) {
+        const user = currentUser.email;
+        axios
+          .post("http://localhost:5000/jwtToken", user, {
+            withCredentials: true,
+          })
+          .then((res) => {
+            console.log("logIn", res.data);
+            setLoading(false);
+          });
+      } else {
+        axios
+          .post("http://localhost:5000/logout", {}, { withCredentials: true })
+          .then((res) => {
+            console.log("logout", res.data);
+            setLoading(false);
+          });
+      }
     });
     return () => {
       unsubscribe();
@@ -53,7 +73,7 @@ const AuthProvide = ({ children }) => {
     createUser,
     SignInUser,
     signOutUser,
-    signInWithGoogle
+    signInWithGoogle,
   };
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
