@@ -5,7 +5,7 @@ import AuthContext from "../../context/AuthContext";
 import Swal from "sweetalert2";
 import SocialLogin from "../Common/SocialLogin";
 import { useLocation, useNavigate } from "react-router-dom";
-import axios from "axios";
+// import axios from "axios";
 
 const SignIn = () => {
   const { SignInUser } = useContext(AuthContext);
@@ -27,13 +27,13 @@ const SignIn = () => {
           text: "User Sign In Successful",
           icon: "success",
         });
-        const user = { email: email };
+        // {const user = { email: email };
 
-        axios
-          .post("http://localhost:5000/jwt", user, { withCredentials: true })
-          .then((data) => {
-            console.log(data);
-          });
+        // axios
+        //   .post("http://localhost:5000/jwt", user, { withCredentials: true })
+        //   .then((data) => {
+        //     console.log(data);
+        //   });}
 
         navigate(location.state || "/");
       })

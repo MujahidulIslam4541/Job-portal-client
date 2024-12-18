@@ -3,7 +3,7 @@ import team1 from "../../assets/team/team1.jpg";
 import team2 from "../../assets/team/team2.jpg";
 const Banner = () => {
   return (
-    <div className="hero  h-96">
+    <div className="hero h-full  md:h-96">
       <div className="hero-content flex-col lg:flex-row-reverse">
         <div className="flex-1">
           <motion.img
@@ -28,7 +28,7 @@ const Banner = () => {
               ease: easeInOut,
               repeat: Infinity,
             }}
-            className="text-5xl font-bold text-[#05264E]"
+            className=" text-2xl md:text-5xl font-bold text-[#05264E]"
           >
             The Easiest Way <br />
             <motion.span
