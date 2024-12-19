@@ -3,15 +3,17 @@ import UseContext from "../../Hooks/UseContex";
 import { MdDelete } from "react-icons/md";
 import Swal from "sweetalert2";
 import { FaClipboardCheck } from "react-icons/fa";
-import axios from "axios";
+// import axios from "axios";
+import UseAxiosSecure from "../../Hooks/UseAxiossecure";
 
 const MyApplication = () => {
+  const useAxiosInstance=UseAxiosSecure()
   const { user } = UseContext();
   const [jobs, setJobs] = useState([]);
   useEffect(() => {
-    axios
-      .get(`https://job-portal-server-two-peach.vercel.app/job-application?email=${user?.email}`,{withCredentials:true})
-      .then((res) => setJobs(res.data));
+
+      useAxiosInstance.get(`/job-application?email=${user?.email}`)
+      .then(res=>setJobs(res.data))
   }, [user?.email]);
 
   //   delete job
