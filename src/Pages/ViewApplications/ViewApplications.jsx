@@ -4,12 +4,11 @@ import Swal from "sweetalert2";
 const ViewApplications = () => {
   const application = useLoaderData();
   const handleStatus = (e, id) => {
-    console.log(id);
     const data = {
       status: e.target.value,
     };
 
-    fetch(`http://localhost:5000/job-application/${id}`, {
+    fetch(`https://job-portal-server-two-peach.vercel.app/job-application/${id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",
@@ -18,7 +17,6 @@ const ViewApplications = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         if (data.modifiedCount) {
           Swal.fire({
             title: "",

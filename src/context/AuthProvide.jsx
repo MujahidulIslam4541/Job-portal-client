@@ -41,21 +41,24 @@ const AuthProvide = ({ children }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
-      console.log("state captured", currentUser);
 
       if (currentUser?.email) {
-        const user = currentUser.email;
+        // const user = currentUser.email;
         axios
-          .post("http://localhost:5000/jwt", user, {
-            withCredentials: true,
-          })
+          .post(
+            "https://job-portal-server-two-peach.vercel.app/jwt",
+            { user: currentUser.email },
+            {
+              withCredentials: true,
+            }
+          )
           .then((res) => {
             console.log("logIn", res.data);
             setLoading(false);
           });
       } else {
         axios
-          .post("http://localhost:5000/logout", {}, { withCredentials: true })
+          .post("https://job-portal-server-two-peach.vercel.app/logout", {}, { withCredentials: true })
           .then((res) => {
             console.log("logout", res.data);
             setLoading(false);

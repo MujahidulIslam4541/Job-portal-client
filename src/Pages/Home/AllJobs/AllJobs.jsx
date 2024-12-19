@@ -4,7 +4,6 @@ import { FaBriefcase } from "react-icons/fa";
 
 const AllJobs = () => {
   const AllJobs = useLoaderData();
-  // console.log(AllJobs);
   return (
     <>
       <div className="bg-gradient-to-r from-blue-500 to-indigo-600 text-white p-16 rounded-lg shadow-lg">

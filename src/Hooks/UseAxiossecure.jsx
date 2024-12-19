@@ -4,7 +4,7 @@ import UseContext from "./UseContex";
 import { useNavigate } from "react-router-dom";
 
 const axiosInstance = axios.create({
-  baseURL: "http://localhost:5000",
+  baseURL: "https://job-portal-server-two-peach.vercel.app",
   withCredentials: true,
 });
 
@@ -17,10 +17,8 @@ const UseAxiosSecure = () => {
         return response;
       },
       (error) => {
-        console.log("error caught in exteroceptor", error);
 
         if (error.status === 403 || error.status === 401) {
-          console.log("logout to user");
           signOutUser()
             .then((data) => {
               console.log(data);
@@ -31,7 +29,7 @@ const UseAxiosSecure = () => {
         return Promise.reject(error);
       }
     );
-  }, []);
+  }, [navigate,signOutUser]);
 
   return axiosInstance;
 };

@@ -6,7 +6,6 @@ const JobApply = () => {
   const navigate = useNavigate();
   const { id } = useParams();
   const { user } = UseContext();
-  // console.log(id,user);
 
   const handleJobApply = (e) => {
     e.preventDefault();
@@ -24,9 +23,9 @@ const JobApply = () => {
       resume,
       description,
     };
-    // console.log(jobApplication);
 
-    fetch("http://localhost:5000/job-application", {
+
+    fetch("https://job-portal-server-two-peach.vercel.app/job-application", {
       method: "POST",
       headers: {
         "content-type": "application/json",

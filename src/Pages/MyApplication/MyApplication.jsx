@@ -3,28 +3,16 @@ import UseContext from "../../Hooks/UseContex";
 import { MdDelete } from "react-icons/md";
 import Swal from "sweetalert2";
 import { FaClipboardCheck } from "react-icons/fa";
-import UseAxiosSecure from "../../Hooks/UseAxiossecure";
-// import axios from "axios";
+import axios from "axios";
 
 const MyApplication = () => {
   const { user } = UseContext();
   const [jobs, setJobs] = useState([]);
-
-  const useAxiosSecure = UseAxiosSecure();
-
   useEffect(() => {
-    // axios
-    //   .get(`http://localhost:5000/job-application?email=${user.email}`, {
-    //     withCredentials: true,
-    //   })
-    //   .then((res) => {
-    //     setJobs(res.data);
-    //   });
-
-    useAxiosSecure
-      .get(`/job-application?email=${user.email}`)
+    axios
+      .get(`https://job-portal-server-two-peach.vercel.app/job-application?email=${user?.email}`,{withCredentials:true})
       .then((res) => setJobs(res.data));
-  }, [user.email]);
+  }, [user?.email]);
 
   //   delete job
   const handleJobDelete = (id) => {
@@ -38,9 +26,12 @@ const MyApplication = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/job-application/${id}`, {
-          method: "DELETE",
-        })
+        fetch(
+          `https://job-portal-server-two-peach.vercel.app/job-application/${id}`,
+          {
+            method: "DELETE",
+          }
+        )
           .then((res) => res.json())
           .then((data) => {
             if (data.deletedCount > 0) {
@@ -53,7 +44,6 @@ const MyApplication = () => {
           });
       }
     });
-    console.log(id);
   };
   return (
     <div>

@@ -17,7 +17,6 @@ const SignIn = () => {
     const from = e.target;
     const email = from.email.value;
     const password = from.password.value;
-    console.log({ email, password });
 
     SignInUser(email, password)
       .then((result) => {
@@ -27,16 +26,7 @@ const SignIn = () => {
           text: "User Sign In Successful",
           icon: "success",
         });
-        // {const user = { email: email };
-
-        // axios
-        //   .post("http://localhost:5000/jwt", user, { withCredentials: true })
-        //   .then((data) => {
-        //     console.log(data);
-        //   });}
-
-        
-
+      
         navigate(location.state || "/");
       })
       .catch((error) => {

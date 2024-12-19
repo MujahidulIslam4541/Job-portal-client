@@ -15,7 +15,6 @@ const HotJobCard = ({ job }) => {
     company,
     company_logo,
   } = job;
-  // console.log(job.salaryRange);
   return (
     <div className="card card-compact hover:border hover:border-blue-300 hover:-inset-y-1 shadow-xl transition ease-in duration-500">
       <div className="flex items-center gap-4 mt-2">

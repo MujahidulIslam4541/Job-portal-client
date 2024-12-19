@@ -9,16 +9,15 @@ const AddJob = () => {
     e.preventDefault();
     const fromData = new FormData(e.target);
     const initialData = Object.fromEntries(fromData.entries());
-    // console.log(initialData);
+    
     const { min, max, currency, ...newJob } = initialData;
-    // console.log(newJob);
+   
     newJob.salaryRange = { min, max, currency };
-    // console.log(newJob)
+    
     newJob.requirements = newJob.requirements.split("\n");
     newJob.responsibilities = newJob.responsibilities.split("\n");
-    console.log(newJob);
 
-    fetch("http://localhost:5000/jobs", {
+    fetch("https://job-portal-server-two-peach.vercel.app/jobs", {
       method: "POST",
       headers: {
         "content-type": "application/json",

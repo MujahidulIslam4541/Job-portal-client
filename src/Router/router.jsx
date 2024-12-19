@@ -32,7 +32,7 @@ const router = createBrowserRouter([
           </PrivetRouter>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/jobs/${params.id}`),
+          fetch(`https://job-portal-server-two-peach.vercel.app/jobs/${params.id}`),
       },
       {
         path: "jobApply/:id",
@@ -73,7 +73,7 @@ const router = createBrowserRouter([
             <AllJobs></AllJobs>
           </PrivetRouter>
         ),
-        loader: () => fetch("http://localhost:5000/jobs"),
+        loader: () => fetch("https://job-portal-server-two-peach.vercel.app/jobs"),
       },
       {
         path: "viewApplications/:user_id",
@@ -82,7 +82,7 @@ const router = createBrowserRouter([
             <ViewApplications></ViewApplications>
           </PrivetRouter>
         ),
-        loader:({params})=>fetch(`http://localhost:5000/jobApplications/jobs/${params.user_id}`)
+        loader:({params})=>fetch(`https://job-portal-server-two-peach.vercel.app/jobApplications/jobs/${params.user_id}`)
       },
       {
         path: "register",
