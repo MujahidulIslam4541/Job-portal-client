@@ -72,8 +72,7 @@ const router = createBrowserRouter([
           <PrivetRouter>
             <AllJobs></AllJobs>
           </PrivetRouter>
-        ),
-        loader: () => fetch("https://job-portal-server-two-peach.vercel.app/jobs"),
+        )
       },
       {
         path: "viewApplications/:user_id",

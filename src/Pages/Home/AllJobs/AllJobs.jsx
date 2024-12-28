@@ -1,20 +1,19 @@
-import { useLoaderData } from "react-router-dom";
-import AllJob from "./AllJob";
+// import AllJob from "./AllJob";
 import { FaBriefcase } from "react-icons/fa";
 import { useState } from "react";
+import UseJobs from "../../../Hooks/UseJobs";
+import Loading from "../../../Loading/Loading";
+import HotJobCard from "../HotJobCard";
 
 const AllJobs = () => {
-  const AllJobs = useLoaderData();
-  const [activeButton, setActiveButton] = useState(null);
+  const [sort, setSort] = useState(false);
+  const [search,setSearch]=useState("")
+  const { AllJobs, loading } = UseJobs(sort,search);
 
-  const buttons = [
-    "Management",
-    "Marketing & Sale",
-    "Finance",
-    "Human Resource",
-    "Content Writer",
-    "Retail & Product",
-  ];
+  if (loading) {
+    return <Loading></Loading>;
+  }
+
   return (
     <>
       <div className="bg-gradient-to-r from-blue-500 to-indigo-600 text-white p-16 rounded-lg shadow-lg">
@@ -38,26 +37,29 @@ const AllJobs = () => {
       </div>
 
       <div className=" mt-10 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3">
-        {buttons.map((button, index) => (
-          <button
-            key={index}
-            onClick={() => setActiveButton(index)}
-            className={`py-2 px-4 rounded-md hover:border-blue-500 hover:text-blue-500 transition-colors duration-300
-            ${
-              activeButton === index
-                ? "border-2 border-blue-500 text-blue-500"
-                : "border border-gray-200"
-            } 
-            `}
-          >
-            {button}
-          </button>
-        ))}
+        <button
+          onClick={() => setSort(!sort)}
+          className={`py-2 px-4 border-2 ${
+            sort && `border-blue-500 text-blue-500`
+          } font-semibold rounded-md   transition-colors duration-300`}
+        >
+          {sort == true ? "Sorted By Salary" : "Sort By Salary"}
+        </button>
+        <input
+        onChange={(e)=>setSearch(e.target.value)}
+          type="text"
+          placeholder="Search By Location"
+          className=" w-full md:w-96 border-2 border-gray-500 rounded-lg px-2"
+        />
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-10">
-        {AllJobs.map((job) => (
+        {/* {AllJobs.map((job) => (
           <AllJob key={job._id} job={job}></AllJob>
+        ))} */}
+
+        {AllJobs.map((job) => (
+          <HotJobCard key={job._id} job={job}></HotJobCard>
         ))}
       </div>
     </>

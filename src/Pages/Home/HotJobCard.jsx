@@ -56,7 +56,7 @@ const HotJobCard = ({ job }) => {
               Salary: {salaryRange?.min}-{salaryRange?.max}{" "}
               {salaryRange?.currency}
             </p>
-            <Link to={`jobs/${_id}`}>
+            <Link to={`/jobs/${_id}`}>
               <button className="btn bg-gray-500 text-white group-hover:bg-blue-500">
                 Apply now
               </button>
